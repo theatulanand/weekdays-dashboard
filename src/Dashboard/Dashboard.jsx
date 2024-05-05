@@ -4,7 +4,7 @@ import { getData } from './Actions/getData'
 export const Dashboard = () => {
 
     useEffect(() => {
-        getData();
+        getData(10, 0);
     }, [])
 
     return (
