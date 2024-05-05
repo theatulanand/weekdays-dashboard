@@ -11,6 +11,14 @@ export const Dashboard = () => {
     const [loading, setLoading] = useState(false);
     const [hasMore, setHasMore] = useState(true);
     const observer = useRef();
+    const [filters, setFilters] = useState({
+        roles: ["frontend", "backend"],
+        techStack: [],
+        experience: 5,
+        companyName: "Amazon",
+        location: [],
+        minBasePay: 0,
+    });
 
     const lastJobCardRef = useCallback(node => {
         if (loading) return;
@@ -24,11 +32,16 @@ export const Dashboard = () => {
     }, [loading, hasMore]);
 
     const getJobsData = async () => {
+        console.log(page)
         try {
             setLoading(true);
-            const res = await getData(10 * page, 0);
-            setData(res.jdList);
-            setHasMore(res.jdList.length > 0);
+            const newData = await getData(10 * page, 0, filters, page);
+            if (newData.jdList.length === 0 && page < 90) {
+                setPage(prevPage => prevPage + 1);
+            } else {
+                setData(newData.jdList);
+                setHasMore(newData.jdList.length > 0 && page < 90);
+            }
         } catch (error) {
             console.log(error, "Error while getting data from api");
         } finally {
@@ -37,9 +50,7 @@ export const Dashboard = () => {
     };
 
     useEffect(() => {
-        if (page > 1) {
-            getJobsData();
-        }
+        getJobsData();
     }, [page]);
 
     useEffect(() => {
@@ -50,21 +61,11 @@ export const Dashboard = () => {
     return (
         <Box component="section" sx={{ p: 2, margin: 4 }}>
             <Grid container spacing={2}>
-                {data.map((job, index) => {
-                    if (data.length === index + 1) {
-                        return (
-                            <Grid key={index} ref={lastJobCardRef} xs={12} sm={6} md={4} lg={3}>
-                                <JobCard job={job} />
-                            </Grid>
-                        );
-                    } else {
-                        return (
-                            <Grid key={index} xs={12} sm={6} md={4} lg={3}>
-                                <JobCard job={job} />
-                            </Grid>
-                        );
-                    }
-                })}
+                {data.map((job, index) => (
+                    <Grid key={index} ref={index === data.length - 1 ? lastJobCardRef : null} xs={12} sm={6} md={4} lg={3}>
+                        <JobCard job={job} />
+                    </Grid>
+                ))}
             </Grid>
             <Box textAlign={"center"} mt={"20px"}>
                 {loading && <CircularProgress />}
@@ -72,3 +73,4 @@ export const Dashboard = () => {
         </Box>
     );
 };
+
