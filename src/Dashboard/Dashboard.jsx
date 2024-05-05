@@ -4,6 +4,7 @@ import Grid from '@mui/material/Unstable_Grid2'; // Grid version 2
 import Box from '@mui/material/Box';
 import JobCard from './Components/JobCard';
 import { CircularProgress } from '@mui/material';
+import { Filters } from './Components/Filters';
 
 export const Dashboard = () => {
     const [data, setData] = useState([]);
@@ -60,6 +61,9 @@ export const Dashboard = () => {
 
     return (
         <Box component="section" sx={{ p: 2, margin: 4 }}>
+            <Box spacing={2}>
+                <Filters />
+            </Box>
             <Grid container spacing={2}>
                 {data.map((job, index) => (
                     <Grid key={index} ref={index === data.length - 1 ? lastJobCardRef : null} xs={12} sm={6} md={4} lg={3}>
