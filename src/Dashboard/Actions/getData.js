@@ -11,10 +11,12 @@ export const getData = async (limit, offset, filterOptions) => {
             return (
                 (filterOptions.roles.includes(job.jobRole) || filterOptions.roles.length === 0) &&
                 (filterOptions.techStack.includes(job.jobRole) || filterOptions.techStack.length === 0) &&
-                (job.minExp <= filterOptions.experience || !job.minExp) &&
-                (job.maxExp >= filterOptions.experience || !job.maxExp) &&
-                (!filterOptions.companyName || job.companyName.toLowerCase().startsWith(filterOptions.companyName.toLowerCase()))
+                ((!filterOptions.experience && filterOptions.experience !== 0) || // Check if experience is undefined or null
+                    (job.minExp <= filterOptions.experience || !job.minExp)) && // Apply filter only if experience is defined
+                (job.maxExp >= filterOptions.experience || !job.maxExp || // Apply filter only if experience is defined
+                    (!filterOptions.companyName || job.companyName.toLowerCase().startsWith(filterOptions.companyName.toLowerCase())))
             );
+
         });
 
         console.log(filteredData)

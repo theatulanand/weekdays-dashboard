@@ -12,12 +12,12 @@ export const Dashboard = () => {
     const [hasMore, setHasMore] = useState(true);
     const observer = useRef();
     const [filters, setFilters] = useState({
-        roles: ["frontend", "backend"],
+        roles: ["android", "frontend"],
         techStack: [],
-        experience: 5,
-        companyName: "Amazon",
+        experience: 4,
+        companyName: "",
         location: [],
-        minBasePay: 0,
+        minBasePay: 10,
     });
 
     const lastJobCardRef = useCallback(node => {
