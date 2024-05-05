@@ -14,7 +14,9 @@ export const getData = async (limit, offset, filterOptions) => {
                 ((!filterOptions.experience && filterOptions.experience !== 0) || // Check if experience is undefined or null
                     (job.minExp <= filterOptions.experience || !job.minExp)) && // Apply filter only if experience is defined
                 (job.maxExp >= filterOptions.experience || !job.maxExp || // Apply filter only if experience is defined
-                    (!filterOptions.companyName || job.companyName.toLowerCase().startsWith(filterOptions.companyName.toLowerCase())))
+                    (!filterOptions.companyName || job.companyName.toLowerCase().startsWith(filterOptions.companyName.toLowerCase()))) &&
+                (job.minJdSalary >= filterOptions.minBasePay || !filterOptions.minBasePay) && // Apply filter only if minBasePay is defined
+                (filterOptions.location.length === 0 || filterOptions.location.includes(job.location)) // Apply location filter
             );
 
         });

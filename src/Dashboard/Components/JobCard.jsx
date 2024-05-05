@@ -10,7 +10,7 @@ import { Box } from '@mui/material';
 
 
 export default function JobCard({ job }) {
-    const { companyName, jobRole, location, logoUrl, minExp, jobDetailsFromCompany } = job
+    const { companyName, jobRole, location, logoUrl, minExp, jobDetailsFromCompany, minJdSalary } = job
     const capitalizeFirstLetter = (string) => {
         return string.charAt(0).toUpperCase() + string.slice(1);
     }
@@ -34,6 +34,9 @@ export default function JobCard({ job }) {
                 titleTypographyProps={{ fontSize: "13px", fontWeight: "600", letterSpacing: "1px", marginBottom: "3px", color: "#8b8b8b" }}
             />
             <CardContent>
+                <Typography variant="body2" color="black" marginBottom={"10px"} fontWeight={"600"}>
+                    Min Basic Pay: {minJdSalary + "$"}
+                </Typography>
                 <Typography variant="body2" color="black" marginBottom={"10px"} fontWeight={"600"}>
                     About Company:
                 </Typography>
