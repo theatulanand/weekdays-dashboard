@@ -16,7 +16,7 @@ export const Dashboard = () => {
         techStack: [],
         experience: undefined,
         companyName: "",
-        location: [],
+        location: ["chennai"],
         minBasePay: 0,
     });
 
