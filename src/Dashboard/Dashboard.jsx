@@ -71,9 +71,9 @@ export const Dashboard = () => {
                             </Grid>
                         ))}
                     </Grid>
-                    <Box textAlign="center" mt={2}>
+                    {/* <Box textAlign="center" mt={2}>
                         {loading && <CircularProgress />}
-                    </Box>
+                    </Box> */}
                 </>
             }
         </Box>

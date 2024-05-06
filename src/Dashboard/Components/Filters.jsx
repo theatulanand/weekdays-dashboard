@@ -50,11 +50,13 @@ export const Filters = ({ filters, setFilters }) => {
         }
     ]
     const experienceOptions = new Array(10).fill(0).map((_, i) => i + 1);
+    const basePayOptions = new Array(10).fill(0).map((_, i) => (i + 1) * 10);
     return (
         <Grid container mb={2}>
             <MultipleSelect options={roleOptions} value={filters} setValue={setFilters} label="Role" filterName='roles' />
             <MultipleSelect options={cityOptions} value={filters} setValue={setFilters} label="Location" filterName='location' />
             <SelectFilter options={experienceOptions} value={filters} setValue={setFilters} label="Experience" filterName='experience' />
+            <SelectFilter options={basePayOptions} value={filters} setValue={setFilters} label="Min Base Pay" filterName='minBasePay' />
         </Grid>
     )
 }
