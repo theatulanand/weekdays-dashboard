@@ -34,7 +34,7 @@ export default function JobCard({ job }) {
             />
             <CardContent>
                 <Typography variant="body2" color="black" marginBottom={"10px"} fontWeight={"600"}>
-                    {minJdSalary ? `Min Basic Pay: ${minJdSalary} $ ` : ` `}
+                    {minJdSalary ? `Min Basic Pay: ${minJdSalary} $ ` : `Min Basic Pay: N/A `}
                 </Typography>
                 <Typography variant="body2" color="black" marginBottom={"10px"} fontWeight={"600"}>
                     About Company:

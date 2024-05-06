@@ -18,7 +18,7 @@ export const Dashboard = () => {
         experience: undefined,
         companyName: "",
         location: [],
-        minBasePay: 0,
+        minBasePay: undefined,
     });
 
     const lastJobCardRef = useCallback(node => {
