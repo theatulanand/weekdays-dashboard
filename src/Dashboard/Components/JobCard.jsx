@@ -2,7 +2,6 @@ import * as React from 'react';
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
 import CardContent from '@mui/material/CardContent';
-import CardActions from '@mui/material/CardActions';
 import Avatar from '@mui/material/Avatar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
@@ -10,7 +9,7 @@ import { Box } from '@mui/material';
 
 
 export default function JobCard({ job }) {
-    const { companyName, jobRole, location, logoUrl, minExp, jobDetailsFromCompany, minJdSalary } = job
+    const { companyName, jobRole, location, logoUrl, minExp, jobDetailsFromCompany, minJdSalary, jdUid } = job
     const capitalizeFirstLetter = (string) => {
         return string.charAt(0).toUpperCase() + string.slice(1);
     }
@@ -35,7 +34,7 @@ export default function JobCard({ job }) {
             />
             <CardContent>
                 <Typography variant="body2" color="black" marginBottom={"10px"} fontWeight={"600"}>
-                    Min Basic Pay: {minJdSalary + "$"}
+                    {minJdSalary ? `Min Basic Pay: ${minJdSalary} $ ` : ` `}
                 </Typography>
                 <Typography variant="body2" color="black" marginBottom={"10px"} fontWeight={"600"}>
                     About Company:
