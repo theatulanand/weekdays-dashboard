@@ -1,6 +1,7 @@
-import Grid2 from '@mui/material/Unstable_Grid2/Grid2'
+
 import React, { useState } from 'react'
 import MultipleSelect from './Multiselect'
+import { Grid } from '@mui/material'
 
 export const Filters = ({ filters, setFilters }) => {
     const roleOptions = [
@@ -25,9 +26,32 @@ export const Filters = ({ filters, setFilters }) => {
             value: 'tech lead'
         }
     ]
+    const cityOptions = [
+        {
+            label: 'Delhi NCR',
+            value: 'delhi ncr'
+        },
+        {
+            label: 'Gurugram',
+            value: 'gurugram'
+        },
+        {
+            label: 'Noida',
+            value: 'noida'
+        },
+        {
+            label: 'Mumbai',
+            value: 'mumbai'
+        },
+        {
+            label: 'Chennai',
+            value: 'chennai'
+        }
+    ]
     return (
-        <Grid2>
+        <Grid container mb={2}>
             <MultipleSelect options={roleOptions} value={filters} setValue={setFilters} label="Role" filterName='roles' />
-        </Grid2>
+            <MultipleSelect options={cityOptions} value={filters} setValue={setFilters} label="Location" filterName='location' />
+        </Grid>
     )
 }

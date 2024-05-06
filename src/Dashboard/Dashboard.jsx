@@ -62,16 +62,20 @@ export const Dashboard = () => {
             <Box spacing={2}>
                 <Filters filters={filters} setFilters={setFilters} /> {/* Assuming Filters component */}
             </Box>
-            <Grid container spacing={2}>
-                {filteredData.map((job, index) => (
-                    <Grid key={index} ref={index === filteredData.length - 1 ? lastJobCardRef : null} xs={12} sm={6} md={4} lg={3}>
-                        <JobCard job={job} />
+            {
+                filteredData.length === 0 ? <Box>No Data Found</Box> : <>
+                    <Grid container spacing={2}>
+                        {filteredData.map((job, index) => (
+                            <Grid key={index} ref={index === filteredData.length - 1 ? lastJobCardRef : null} xs={12} sm={6} md={4} lg={3}>
+                                <JobCard job={job} />
+                            </Grid>
+                        ))}
                     </Grid>
-                ))}
-            </Grid>
-            <Box textAlign="center" mt={2}>
-                {loading && <CircularProgress />}
-            </Box>
+                    <Box textAlign="center" mt={2}>
+                        {loading && <CircularProgress />}
+                    </Box>
+                </>
+            }
         </Box>
     );
 };
