@@ -3,7 +3,6 @@ import { filterData, getData } from './Actions/getData'; // Assuming getData fet
 import Grid from '@mui/material/Unstable_Grid2'; // Grid version 2
 import Box from '@mui/material/Box';
 import JobCard from './Components/JobCard';
-import { CircularProgress } from '@mui/material';
 import { Filters } from './Components/Filters';
 
 export const Dashboard = () => {
@@ -60,7 +59,7 @@ export const Dashboard = () => {
     return (
         <Box component="section" sx={{ p: 2, margin: 4 }}>
             <Box spacing={2}>
-                <Filters filters={filters} setFilters={setFilters} /> {/* Assuming Filters component */}
+                <Filters filters={filters} setFilters={setFilters} /> {/* Filters component */}
             </Box>
             {
                 filteredData.length === 0 ? <Box>No Data Found</Box> : <>
@@ -71,9 +70,6 @@ export const Dashboard = () => {
                             </Grid>
                         ))}
                     </Grid>
-                    {/* <Box textAlign="center" mt={2}>
-                        {loading && <CircularProgress />}
-                    </Box> */}
                 </>
             }
         </Box>
